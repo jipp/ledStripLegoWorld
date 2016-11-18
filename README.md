@@ -1,4 +1,5 @@
 # ledStripLegoWorld
+Arduino based controller for WS2812B LED strip with different Programs
 
 ## The following features are implemented
 * different Programs to be selected
@@ -10,7 +11,7 @@ Put the waterDropCapture folder into the local Arduino folder.
 ## Additional files
 -
 
-OpenSCAD files included
+## OpenSCAD files included
 -
 
 ## Info
