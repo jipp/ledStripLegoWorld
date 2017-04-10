@@ -1,6 +1,6 @@
 #include "Arduino.h"
 
-#include "FastLED.h"
+#include <FastLED.h>
 #include <EEPROM.h>
 
 #define DATA_PIN 1
