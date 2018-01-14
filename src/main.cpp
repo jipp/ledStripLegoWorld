@@ -1,7 +1,7 @@
 #include "Arduino.h"
 
 #include <FastLED.h>
-#include <EEPROM.h>
+#include <avr/eeprom.h>
 
 #define DATA_PIN 1
 
@@ -13,7 +13,7 @@ CRGB leds[NUM_LEDS];
 const int brightness = 32;
 
 // store current pattern for restoration
-const byte address = 0;
+const byte EEMEM address = 0;
 
 // pattern variables
 byte pattern = 0;
@@ -51,7 +51,7 @@ void showTrafficLight();
 void setup() {
         FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
         FastLED.setBrightness(brightness);
-        pattern = EEPROM.read(address);
+        pattern = eeprom_read_byte(&address);
         attachInterrupt(0, interruptServiceRoutine, HIGH);
         showReady();
 }
@@ -80,7 +80,7 @@ void interruptServiceRoutine() {
                 if (pattern++ > patternMax - 2) {
                         pattern = 0;
                 }
-                EEPROM.write(address, pattern);
+                eeprom_write_byte(&address, pattern);
         }
 }
 
